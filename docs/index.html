@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lumo Copilot — a private AI copilot for your Mac</title>
+<meta name="description" content="An AI copilot that runs entirely on your Mac. Your files, your model, your machine — nothing leaves your computer. Free and open, no account required.">
+<meta property="og:title" content="Lumo Copilot">
+<meta property="og:description" content="An AI copilot that runs entirely on your Mac. Nothing leaves your computer.">
+<meta property="og:type" content="website">
+<link rel="icon" href="lumo-cat-icon.svg">
+<style>
+  :root{
+    --accent:#6d4aff; --accent-soft:#ad9aff;
+    --bg:#0e0e11; --bg-soft:#16161b; --card:#1a1a20;
+    --line:#26262e; --text:#f2f2f5; --dim:#a4a4b0; --faint:#6f6f7c;
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent-soft); text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1020px; margin:0 auto; padding:0 24px}
+  .muted{color:var(--dim)}
+
+  /* Hero */
+  header{
+    position:relative; overflow:hidden; text-align:center;
+    padding:88px 0 64px;
+    background:radial-gradient(900px 420px at 50% -10%, rgba(109,74,255,.22), transparent 70%);
+  }
+  .cat{width:104px;height:104px;margin:0 auto 18px;display:block}
+  h1{font-size:clamp(38px,6vw,62px); line-height:1.05; margin:0 0 14px; letter-spacing:-.02em}
+  .tag{font-size:clamp(17px,2.4vw,21px); color:var(--dim); max-width:640px; margin:0 auto 8px}
+  .tag strong{color:var(--text); font-weight:600}
+  .sub{font-size:15px; color:var(--faint); margin:0 auto 32px}
+  .cta{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:14px}
+  .btn{
+    display:inline-block; padding:13px 26px; border-radius:11px; font-weight:600; font-size:15.5px;
+    background:var(--accent); color:#fff; border:1px solid transparent; transition:transform .12s ease,filter .12s ease;
+  }
+  .btn:hover{filter:brightness(1.1); text-decoration:none; transform:translateY(-1px)}
+  .btn.ghost{background:transparent; color:var(--text); border-color:var(--line)}
+  .btn.ghost:hover{border-color:var(--accent); filter:none}
+  .req{font-size:13px;color:var(--faint)}
+
+  /* Sections */
+  section{padding:64px 0; border-top:1px solid var(--line)}
+  h2{font-size:clamp(24px,3.4vw,32px); margin:0 0 12px; letter-spacing:-.015em}
+  .lede{color:var(--dim); max-width:660px; margin:0 0 34px; font-size:16.5px}
+
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(258px,1fr)); gap:16px}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:22px}
+  .card h3{margin:0 0 7px; font-size:16.5px}
+  .card p{margin:0; color:var(--dim); font-size:14.6px; line-height:1.6}
+  .ico{font-size:20px; margin-bottom:10px; display:block}
+
+  /* Privacy band */
+  .band{background:var(--bg-soft)}
+  .points{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; margin-top:26px}
+  .point{display:flex; gap:11px; align-items:flex-start}
+  .check{color:var(--accent-soft); flex-shrink:0; font-weight:700}
+  .point span:last-child{color:var(--dim); font-size:14.6px}
+
+  /* Shots */
+  figure{margin:0 0 26px}
+  figure img{width:100%; border:1px solid var(--line); border-radius:var(--radius); display:block}
+  figcaption{color:var(--faint); font-size:13.5px; margin-top:9px; text-align:center}
+
+  /* Steps */
+  ol.steps{counter-reset:s; list-style:none; padding:0; margin:0; max-width:680px}
+  ol.steps li{counter-increment:s; position:relative; padding:0 0 20px 44px; color:var(--dim)}
+  ol.steps li::before{
+    content:counter(s); position:absolute; left:0; top:-2px; width:28px; height:28px;
+    background:var(--card); border:1px solid var(--line); border-radius:50%;
+    display:flex; align-items:center; justify-content:center; color:var(--accent-soft);
+    font-size:13.5px; font-weight:700;
+  }
+  ol.steps b{color:var(--text)}
+  code{
+    background:var(--card); border:1px solid var(--line); border-radius:6px;
+    padding:1.5px 6px; font-size:13.5px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  .note{
+    margin-top:22px; padding:15px 17px; background:var(--card);
+    border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:10px;
+    color:var(--dim); font-size:14.6px; max-width:680px;
+  }
+
+  footer{padding:44px 0 60px; border-top:1px solid var(--line); color:var(--faint); font-size:14px}
+  .flinks{display:flex; gap:20px; flex-wrap:wrap; margin-bottom:14px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <img class="cat" src="lumo-cat-main.svg" alt="">
+    <h1>Lumo&nbsp;Copilot</h1>
+    <p class="tag">An AI copilot that runs <strong>entirely on your Mac</strong>. Your files, your model, your machine — nothing leaves your computer.</p>
+    <p class="sub">No account. No cloud. No subscription.</p>
+    <div class="cta">
+      <a class="btn" href="https://github.com/dev-pruitt/lumo-copilot-releases/releases/latest">Download for macOS</a>
+      <a class="btn ghost" href="https://github.com/dev-pruitt/lumo-copilot-releases">View on GitHub</a>
+    </div>
+    <p class="req">Apple Silicon · macOS 11+ · free and open</p>
+  </div>
+</header>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Private by construction, not by promise</h2>
+    <p class="lede">Most AI assistants send your conversations — and increasingly your files — to someone else's servers. Lumo makes the opposite bet: the model runs on your machine, so there's nothing to send.</p>
+    <div class="points">
+      <div class="point"><span class="check">✓</span><span>Conversations and files never leave your Mac</span></div>
+      <div class="point"><span class="check">✓</span><span>No account, no sign-in, no telemetry</span></div>
+      <div class="point"><span class="check">✓</span><span>Works with no internet connection at all</span></div>
+      <div class="point"><span class="check">✓</span><span>Every file change and command asks you first</span></div>
+      <div class="point"><span class="check">✓</span><span>The local API is loopback-only and origin-guarded</span></div>
+      <div class="point"><span class="check">✓</span><span>Open source — read exactly what it does</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What it does</h2>
+    <p class="lede">A real assistant, not a chat box — it can read your files and act on your Mac, but only ever with your approval.</p>
+    <div class="grid">
+      <div class="card"><span class="ico">💬</span><h3>Private chat</h3><p>Talk to an open model — Gemma, Llama, Granite, Phi and more — running locally. Attach a document and it reads it directly, no upload.</p></div>
+      <div class="card"><span class="ico">⚡</span><h3>Acts on your Mac</h3><p>Organise folders, dig into disk usage, run commands. It shows you exactly what it will do and waits for your OK every time.</p></div>
+      <div class="card"><span class="ico">🎛️</span><h3>Knows its own limits</h3><p>Models are sorted by what they can actually do, and tested by hand. Lumo never claims an ability the model you picked doesn't have.</p></div>
+      <div class="card"><span class="ico">🔍</span><h3>Deep Research</h3><p>Ask a real question. Lumo plans searches, reads the pages it finds, and writes one answer with citations back to every source.</p></div>
+      <div class="card"><span class="ico">⚖️</span><h3>Compare</h3><p>Ask several of your models the same thing and read the answers side by side. Find out which one is actually good at your work.</p></div>
+      <div class="card"><span class="ico">⌨️</span><h3>Coding workspace</h3><p>File tree, editor, terminal, git diff and a live preview — with the assistant beside it, able to read and change the project.</p></div>
+      <div class="card"><span class="ico">🧩</span><h3>Extensible (MCP)</h3><p>Add tool servers over the open Model Context Protocol. You choose each one, and every call still asks permission.</p></div>
+      <div class="card"><span class="ico">📚</span><h3>Projects &amp; memory</h3><p>Group related chats with shared context, notes and reference files, so the assistant keeps its bearings across sessions.</p></div>
+      <div class="card"><span class="ico">⏰</span><h3>Schedules</h3><p>Hand it recurring chores. It can even wake the Mac to run them, if you let it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>A look inside</h2>
+    <figure>
+      <img src="chat.png" alt="The Lumo Copilot chat window running a local model">
+      <figcaption>Chat runs on a model installed on your own machine.</figcaption>
+    </figure>
+    <figure>
+      <img src="models.png" alt="The model picker showing capability categories and memory fit">
+      <figcaption>Pick a model by what it can do — and see whether it fits your Mac's memory.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Getting started</h2>
+    <p class="lede">About five minutes, most of it waiting for a model to download.</p>
+    <ol class="steps">
+      <li><b>Download the DMG</b> and drag Lumo to your Applications folder.</li>
+      <li><b>Right-click the app and choose Open</b> the first time. The build isn't signed with a paid Apple certificate yet, so macOS asks once — after that it opens normally.</li>
+      <li><b>Let it set itself up.</b> On first run Lumo offers to install <a href="https://ollama.com">Ollama</a>, which runs the models.</li>
+      <li><b>Pick a model.</b> Lumo recommends ones that suit your Mac's memory and tells you honestly what each is good at. Gemma&nbsp;4&nbsp;·&nbsp;12B is a solid start.</li>
+      <li><b>Say hello.</b> Then try something real: <code>what's eating my disk space?</code></li>
+    </ol>
+    <p class="note"><b>Why the Gatekeeper prompt?</b> Signing an app requires a paid Apple Developer account. Lumo is free and unsigned for now, so macOS shows its standard warning for apps outside the App Store. The source is public if you'd rather read it or build it yourself.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Ready to try it?</h2>
+    <p class="lede">Free, open, and yours. It updates itself when there's something new.</p>
+    <div class="cta" style="justify-content:flex-start">
+      <a class="btn" href="https://github.com/dev-pruitt/lumo-copilot-releases/releases/latest">Download for macOS</a>
+      <a class="btn ghost" href="https://github.com/dev-pruitt/lumo-copilot-releases/releases">All releases</a>
+    </div>
+    <p class="req">Apple Silicon (M1 and later) · macOS 11 Big Sur or newer · about 8&nbsp;GB free for a model</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="flinks">
+      <a href="https://github.com/dev-pruitt/lumo-copilot-releases">GitHub</a>
+      <a href="https://github.com/dev-pruitt/lumo-copilot-releases/releases">Releases</a>
+      <a href="https://ollama.com">Ollama</a>
+    </div>
+    <p style="margin:0">An independent project, built in the open. Not affiliated with any company.<br>Runs on your Mac — nothing leaves the machine.</p>
+  </div>
+</footer>
+
+</body>
+</html>
