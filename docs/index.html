@@ -165,12 +165,12 @@
     <p class="lede">About five minutes, most of it waiting for a model to download.</p>
     <ol class="steps">
       <li><b>Download the DMG</b> and drag Lumo to your Applications folder.</li>
-      <li><b>Right-click the app and choose Open</b> the first time. The build isn't signed with a paid Apple certificate yet, so macOS asks once — after that it opens normally.</li>
+      <li><b>Approve it once.</b> Double-click Lumo — macOS will refuse it the first time. Open <b>System&nbsp;Settings → Privacy&nbsp;&amp;&nbsp;Security</b>, scroll to <b>Security</b>, and click <b>Open&nbsp;Anyway</b>. You only do this once.</li>
       <li><b>Let it set itself up.</b> On first run Lumo offers to install <a href="https://ollama.com">Ollama</a>, which runs the models.</li>
       <li><b>Pick a model.</b> Lumo recommends ones that suit your Mac's memory and tells you honestly what each is good at. Gemma&nbsp;4&nbsp;·&nbsp;12B is a solid start.</li>
       <li><b>Say hello.</b> Then try something real: <code>what's eating my disk space?</code></li>
     </ol>
-    <p class="note"><b>Why the Gatekeeper prompt?</b> Signing an app requires a paid Apple Developer account. Lumo is free and unsigned for now, so macOS shows its standard warning for apps outside the App Store. The source is public if you'd rather read it or build it yourself.</p>
+    <p class="note"><b>Why the prompt?</b> Removing it requires a paid Apple Developer certificate. Lumo is free, so macOS shows its standard warning for apps from outside the App Store. Prefer the terminal? <code>xattr -dr com.apple.quarantine "/Applications/Lumo Copilot.app"</code> does the same thing.</p>
   </div>
 </section>
 
