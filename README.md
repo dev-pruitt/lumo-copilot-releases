@@ -41,7 +41,11 @@ Most AI assistants send your conversations — and increasingly your files — t
 
 1. Download the latest `.dmg` from [Releases](https://github.com/dev-pruitt/lumo-copilot-releases/releases).
 2. Open it and drag **Lumo Copilot** to Applications.
-3. **Right-click the app → Open** — just the first time — to get past Gatekeeper.
+3. **Approve it once.** Double-click Lumo; macOS will refuse it. Then open
+   **System Settings → Privacy & Security**, scroll to **Security**, and click
+   **Open Anyway**. (Apple removed the old right-click → Open shortcut in
+   macOS 15.) Terminal equivalent:
+   `xattr -dr com.apple.quarantine "/Applications/Lumo Copilot.app"`
 4. On first run it offers to install [Ollama](https://ollama.com) and lets you pick a model.
 
 The app checks here for newer releases and updates itself in a couple of clicks.
